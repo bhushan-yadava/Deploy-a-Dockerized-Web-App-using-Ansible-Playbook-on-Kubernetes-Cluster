@@ -1,0 +1,3 @@
+FROM willhallonline/ansible:latest
+
+RUN pip3 install kubernetes

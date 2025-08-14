@@ -1,0 +1,6 @@
+- name: Wait for service to be available
+  wait_for:
+    host: 127.0.0.1
+    port: 30007
+    delay: 10
+    timeout: 60

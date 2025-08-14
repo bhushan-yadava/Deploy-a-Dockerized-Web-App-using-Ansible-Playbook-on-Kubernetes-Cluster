@@ -1,0 +1,6 @@
+- name: Build Docker image
+  community.docker.docker_image:
+    path: "{{ playbook_dir }}/../app"
+    name: flask-app
+    tag: latest
+    push: no

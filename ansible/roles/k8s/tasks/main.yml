@@ -1,0 +1,15 @@
+
+- name: Load Docker image into KinD cluster
+  command: kind load docker-image flask-app:latest --name k8s-cluster
+  args:
+    warn: false
+
+- name: Apply deployment manifest
+  kubernetes.core.k8s:
+    state: present
+    src: "{{ playbook_dir }}/../k8s/deployment.yml"
+
+- name: Apply service manifest
+  kubernetes.core.k8s:
+    state: present
+    src: "{{ playbook_dir }}/../k8s/service.yml"

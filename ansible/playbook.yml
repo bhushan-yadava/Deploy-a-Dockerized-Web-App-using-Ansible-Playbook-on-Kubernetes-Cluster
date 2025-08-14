@@ -1,0 +1,15 @@
+- name: Deploy Flask App to Kubernetes
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Apply Deployment
+      kubernetes.core.k8s:
+        kubeconfig: "{{ lookup('env', 'KUBECONFIG') | default('~/.kube/config', true) }}"
+        state: present
+        src: ../k8s/deployment.yml
+
+    - name: Apply Service
+      kubernetes.core.k8s:
+        kubeconfig: "{{ lookup('env', 'KUBECONFIG') | default('~/.kube/config', true) }}"
+        state: present
+        src: ../k8s/service.yml
